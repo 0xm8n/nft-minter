@@ -6,7 +6,7 @@ const contractAddress = process.env.CONTRACT || "";
 
 const checkLoop = 3000; // millisecond to loop check mint open
 const waitTime = 100; // number of loop to check, overall = checkSec*waitTime (eg. 3*100 = 300 second = 5 min)
-const wantMint = 1;
+let wantMint = ethers.BigNumber.from(1);
 
 async function main() {
   let isOpen = false;
@@ -35,18 +35,20 @@ async function main() {
     await new Promise((resolve) => setTimeout(resolve, checkLoop));
   }
   if (isOpen) {
+    wantMint = wantMint > maxmint ? maxmint : wantMint;
     // eslint-disable-next-line prettier/prettier
     console.log("### Send public mint for", wantMint, "at price", ethers.utils.formatEther(mintPrice));
     mintNFT = await nftContract.mintPublic(wantMint, {
-      value: mintPrice,
+      value: mintPrice.mul(wantMint),
     });
-  }
-  console.log(" ");
-  console.log("mint txn:", mintNFT || "no data");
-  if (mintNFT) {
-    const mintReciept = await mintNFT.wait();
+
     console.log(" ");
-    console.log("mint result:", mintReciept || "no data");
+    console.log("mint txn:", mintNFT);
+    if (mintNFT) {
+      const mintReciept = await mintNFT.wait();
+      console.log(" ");
+      console.log("mint result:", mintReciept);
+    }
   }
 }
 
