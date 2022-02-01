@@ -41,8 +41,15 @@ const config: HardhatUserConfig = {
       url: process.env.ROPSTEN_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      gas: 2100000,
-      gasPrice: 200000000000,
+      gas: 500000, // gaslimit can be update
+      gasPrice: "auto", // 200000000000 = 200 gwei, can be update
+    },
+    mainnet: {
+      url: process.env.ETHEREUM_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gas: 500000, // gaslimit can be update
+      gasPrice: "auto", // 200000000000 = 200 gwei, can be update
     },
   },
   gasReporter: {
