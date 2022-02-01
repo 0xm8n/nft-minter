@@ -41,15 +41,15 @@ const config: HardhatUserConfig = {
       url: process.env.ROPSTEN_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      gas: 2100000, // gaslimit can be update
-      gasPrice: 200000000000, // 20000000000 = 200 gwei, can be update
+      gas: 2100000, // gaslimit can be update but recommend not lower
+      gasPrice: 200000000000, // 20000000000 = 200 gwei, can be update but recommend not lower
     },
     mainnet: {
       url: process.env.ETHEREUM_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      gas: 2100000, // gaslimit can be update
-      gasPrice: 200000000000, // 200000000000 = 200 gwei, can be update
+      gas: 2100000, // gaslimit can be update but recommend not lower
+      gasPrice: 200000000000, // 200000000000 = 200 gwei, can be update but recommend not lower
     },
   },
   gasReporter: {
