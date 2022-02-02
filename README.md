@@ -14,7 +14,7 @@
 7. update contract address in .env file
 8. verify to ropsten testnet
 9. run mint scripts and wait for script start to check contract parameter and return "Public mint is CLOSE"
-10. open ropsten etherscan and search contract address, then go to white contract and call function to update parameter
+10. open ropsten etherscan and search contract address, then go to write contract and call function to update parameter
 11. after parameter update to the block script should return "Public mint is OPEN !!!" and start to mint.
 12. wait for mint result, check if error, also check on etherscan
 
