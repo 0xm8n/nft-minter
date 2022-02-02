@@ -1,46 +1,28 @@
-# Advanced Sample Hardhat Project
+# Setup
+1. create account at https://dashboard.alchemyapi.io/ then create ropsten and mainnet application.
+2. signup https://etherscan.io/ and create apikey
+3. create .env file follow .env.example and update value
+4. create new metamask wallet for test, recommend to use different browser from real account
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+# Test
+1. Copy contracts and manual dependency from etherscan in to new project folder, exclude openzepeelin.
+2. Copy scripts project folder and rename to the same name as contracts project folder
+3. update mint.ts parameter and logic to check contract parameter for public mint open.
+4. update project name in .env file
+5. update deploy.ts and constructor param in arguments.ts
+6. deploy to ropsten testnet
+7. update contract address in .env file
+8. verify to ropsten testnet
+9. run mint scripts and wait for script start to check contract parameter and return "Public mint is CLOSE"
+10. open ropsten etherscan and search contract address, then go to white contract and call function to update parameter
+11. after parameter update to the block script should return "Public mint is OPEN !!!" and start to mint.
+12. wait for mint result, check if error, also check on etherscan
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
-
+# Command
 Try running some of the following tasks:
-
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.ts
-TS_NODE_FILES=true npx ts-node scripts/deploy.ts
-npx eslint '**/*.{js,ts}'
-npx eslint '**/*.{js,ts}' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+npm run deploy
+npm run verify
+npm run mint
+npm run main:mint
 ```
-
-# Etherscan verification
-
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
-```shell
-hardhat run --network ropsten scripts/sample-script.ts
-```
-
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
-
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
-
-# Performance optimizations
-
-For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
