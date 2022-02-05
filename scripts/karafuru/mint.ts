@@ -18,8 +18,8 @@ async function main() {
   const mintPrice = await nftContract.PUBLIC_SALES_START_PRICE();
   const maxmint = await nftContract.MAX_QTY_PER_MINTER();
 
-  const openTimestamp = 1644042315;
-  // const openTimestamp = await nftContract.publicSalesStartTime();
+  // const openTimestamp = ethers.BigNumber.from(1644042315);
+  const openTimestamp = await nftContract.publicSalesStartTime();
 
   wantMint = wantMint > maxmint ? maxmint : wantMint;
 
@@ -37,7 +37,9 @@ async function main() {
   // this contract use publicListMaxMint to check if public mint enable.
   // must check function name and logic from the contract and update it
   for (let index = 0; index < waitTime; index++) {
-    const currentTimeatamp = Math.round(Date.now() / 1000);
+    const currentTimeatamp = ethers.BigNumber.from(
+      Math.round(Date.now() / 1000)
+    );
     console.log("Open timestamp is", openTimestamp);
     console.log("Current timestamp is", currentTimeatamp);
     isOpen = currentTimeatamp >= openTimestamp;
