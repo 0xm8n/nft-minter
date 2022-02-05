@@ -26,7 +26,25 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
+        version: "0.8.9",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
         version: "0.8.10",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.8.11",
         settings: {
           optimizer: {
             enabled: true,
@@ -42,14 +60,14 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       gas: 2100000, // gaslimit can be update but recommend not lower
-      gasPrice: 200000000000, // 20000000000 = 200 gwei, can be update but recommend not lower
+      gasPrice: 200000000000, // 50000000000 = 500 gwei, can be update but recommend not lower
     },
     mainnet: {
       url: process.env.ETHEREUM_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       gas: 2100000, // gaslimit can be update but recommend not lower
-      gasPrice: 200000000000, // 200000000000 = 200 gwei, can be update but recommend not lower
+      gasPrice: 500000000000, // 500000000000 = 500 gwei, can be update but recommend not lower
     },
   },
   gasReporter: {
