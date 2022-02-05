@@ -4,7 +4,7 @@ dotenv.config();
 
 const contractAddress = process.env.CONTRACT || "";
 const checkLoop = 1000; // millisecond to loop check mint open
-const waitTime = 1800; // number of loop to check, overall = checkSec*waitTime (eg. 3*100 = 300 second = 5 min)
+const waitTime = 1800; // number of loop to check, overall = waitTime*checkLoop (eg. 1800*1000 = 1800 second = 30 min)
 let wantMint = ethers.BigNumber.from(2);
 
 async function main() {

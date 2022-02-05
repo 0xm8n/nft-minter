@@ -3,7 +3,7 @@
 2. signup https://etherscan.io/ and create apikey
 3. create .env file follow .env.example and update value
 4. create new metamask wallet for test, recommend to use different browser from real account
-5. get free test ETH from https://faucet.metamask.io/
+5. get free test ETH from https://faucet.metamask.io/ or https://faucet.paradigm.xyz/
 
 # Test
 1. Copy contracts and manual dependency from etherscan in to new project folder, exclude openzepeelin.
